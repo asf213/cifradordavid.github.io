@@ -1,0 +1,323 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.contenedor {
+  width: 100vw; /* Cambiar a 100vw para que ocupe todo el ancho de la pantalla */
+  height: 100vh; /* Cambiar a 100vh para que ocupe todo el alto de la pantalla */
+  margin: 0 auto;
+  position: relative;
+  background: linear-gradient(#000000, transparent) #000000;
+  transition: background-color 1s linear;
+  overflow: hidden; /* Ocultar elementos que se salgan del contenedor */
+}
+
+.mediodia {
+  background-color: #000119;
+}
+
+.tarde {
+  background-color: #ffadad;
+}
+
+.noche {
+  background-color: #aca8c7;
+}
+
+.dino {
+  border: solid 1px #fff; /* Borde blanco */
+  border-radius: 20px; /* Sin bordes redondeados */
+  min-width: 60px; /* Tamaño mínimo */
+  min-height: 50px; /* Tamaño mínimo */
+  position: absolute;
+  bottom: 5%; /* Mantenerlo dentro del contenedor */
+  left: 5%; /* Mantenerlo dentro del contenedor */
+  z-index: 2;
+  background: url(../img/cohete.gif) no-repeat; /* Ruta al GIF */
+  background-size: contain; /* Asegura que el GIF se ajuste al contenedor */
+  background-position: center; /* Centra el GIF dentro del contenedor */
+  padding: 0; /* Elimina cualquier padding */
+  margin: 0; /* Elimina cualquier margen */
+}
+
+
+
+.controls {
+  position: fixed;
+  bottom: 5%; /* Ajustar para mantener la posición desde el fondo */
+  right: 0%; /* Ajustar para mantener la posición desde la derecha */
+  display: flex;
+  flex-direction: column; /* Coloca las flechas en columna */
+  justify-content: space-between;
+  width: 10vw; /* Usa una unidad relativa para ancho */
+  z-index: 1;
+}
+
+.arrow {
+  width: 5vw; /* Usa una unidad relativa para ancho */
+  height: 5vw; /* Mantiene la proporción de las flechas */
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  font-size: 2vw; /* Ajusta el tamaño de fuente relativo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  margin: 5px 0; /* Espacio entre las flechas */
+}
+
+.arrow:hover{
+  background-color: rgba(102, 102, 102, 0.8);
+  border:  #ffbd07 2px solid;
+}
+
+.suelo {
+  width: 200%;
+  height: 42px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-size: 50% 42px;
+}
+
+.nube {
+  width: 10vw; /* Cambiar a vw para escalar con la pantalla */
+  height: 10vw; /* Cambiar a vw para escalar con la pantalla */
+  position: absolute;
+  z-index: 0;
+  background: url(img/nube.png) no-repeat;
+  background-size: cover; /* Cambiar a cover para que mantenga la proporción */
+}
+
+.score {
+  width: 10vw; /* Cambiar a vw para escalar con la pantalla */
+  height: 5vh; /* Cambiar a vh para escalar con la pantalla */
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  z-index: 10;
+  color: #828282;
+  font-family: Verdana;
+  font-size: 3vw; /* Ajustar a vw para escalar */
+  font-weight: bold;
+  text-align: right;
+}
+
+.score.centrado {
+  height: 10vh;
+  width: 30vw; /* Cambiar a vw para escalar con la pantalla */
+  top: 70%; /* Centro verticalmente */
+  left: 50%; /* Centro horizontalmente */
+  transform: translate(-50%, -50%); /* Ajustar el elemento al centro */
+  text-align: center; /* Alinear el texto al centro */
+}
+
+.game-over {
+  z-index: 1;
+  display: none;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: #ffbd07;
+  font-size: 3vw; /* Ajustar a vw para escalar */
+  font-family: Verdana;
+  font-weight: 700;
+}
+
+@keyframes rainbow {
+  0% {
+    background-color: red;
+  }
+  14% {
+    background-color: orange;
+  }
+  20% {
+    background-color: rgb(255, 255, 255);
+  }
+  28% {
+    background-color: yellow;
+  }
+  42% {
+    background-color: rgb(0, 255, 0);
+  }
+  57% {
+    background-color: blue;
+  }
+  68% {
+    background-color: rgb(255, 0, 187);
+  }
+  71% {
+    background-color: indigo;
+  }
+  85% {
+    background-color: violet;
+  }
+  100% {
+    background-color: red;
+  }
+}
+
+.estrella {
+  position: absolute;
+  width: 20px; /* Cambiar a px o vw */
+  height: 20px; /* Cambiar a px o vw */
+  background-color: yellow; /* Color inicial, pero la animación lo reemplazará */
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  z-index: 1;
+
+  animation: rotate 2s linear infinite; /* Animación para mover el obstáculo */
+
+}
+
+/* Definir la animación de rotación */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); /* Comienza en 0 grados */
+  }
+  to {
+    transform: rotate(360deg); /* Gira 360 grados */
+  }
+}
+
+.temporizador {
+  text-align: center;
+  top: 5px;
+  left: 5px; /* Ajustar para mantener dentro del contenedor */
+  color: #d48871;
+  font-family: Verdana;
+  font-size: 3vw; /* Ajustar a vw para escalar */
+  font-weight: bold;
+}
+
+.scoreFinal {
+  width: 10vw; /* Cambiar a vw para escalar con la pantalla */
+  height: 5vh; /* Cambiar a vh para escalar con la pantalla */
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  z-index: 10;
+  color: #ffbd07;
+  font-family: Verdana;
+  font-size: 3vw; /* Ajustar a vw para escalar */
+  font-weight: bold;
+  text-align: right;
+}
+
+.tiempo {
+  z-index: 1;
+  color: #d48871;
+  font-size: 3vw; /* Ajustar a vw para escalar */
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 900;
+  text-align: center;
+}
+
+.obstaculo {
+  border: solid 1px #Fff;
+  position: absolute;
+  width: 10vw; /* Cambiar a vw para escalar con la pantalla */
+  height: 10vw; /* Cambiar a vw para escalar con la pantalla */
+  z-index: 1;
+  border-radius: 70px;
+  background-image: url("../img/asteroidee.png"); /* Cambia la ruta a tu GIF */
+  background-size: cover; /* Asegúrate de que el GIF cubra todo el espacio del obstáculo */
+  animation: rotate 5s linear infinite; /* Animación para mover el obstáculo */
+}
+
+/* Definir la animación de movimiento para los obstáculos */
+@keyframes move-obstacle {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes parpadeo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dino-parpadeo {
+  animation: parpadeo 1s ease-in-out 3; /* Parpadea tres veces */
+}
+
+@media (max-width: 768px) {
+  .contenedor {
+    width: 100vw; /* Asegurar que el contenedor ocupe el 100% */
+    height: 100vh; /* Asegurar que el contenedor ocupe el 100% */
+  }
+
+  .obstaculo {
+    width: 8vw; /* Reducir el ancho en pantallas más pequeñas */
+    height: 8vw; /* Reducir la altura en pantallas más pequeñas */
+  }
+
+  .estrella {
+    width: 8px; /* Ajustar el tamaño de las estrellas */
+    height: 8px; /* Ajustar el tamaño de las estrellas */
+  }
+
+  .dino {
+    width: 3vw; /* Ajustar el tamaño del dino */
+    height: 3vw; /* Ajustar el tamaño del dino */
+  }
+
+  .controls {
+    height: 15vw; /* Ajustar el tamaño de los controles */
+    width: 15vw; /* Ajustar el tamaño de los controles */
+  }
+
+  .score,
+  .temporizador,
+  .puntos {
+    font-size: 4vw; /* Aumentar tamaño del texto */
+  }
+}
+
+@media (max-width: 480px) {
+  .contenedor {
+    width: 100vw; /* Asegurar que el contenedor ocupe el 100% */
+    height: 100vh; /* Asegurar que el contenedor ocupe el 100% */
+  }
+
+  .dino {
+    width: 20vw; /* Ajustar el tamaño aún más en pantallas muy pequeñas */
+    height: 20vw;
+  }
+
+  .controls {
+    height: 10vw; /* Ajustar el tamaño de los controles */
+    width: 10vw; /* Ajustar el tamaño de los controles */
+  }
+}
