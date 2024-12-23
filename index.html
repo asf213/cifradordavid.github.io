@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Me perdonas?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            background-color: #ff6f61;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            margin: 10px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #ff4a41;
+            transform: scale(1.1);
+        }
+
+        button:active {
+            transform: scale(1);
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Me perdonas?</h1>
+    <button ><a href="./flores.html">Sí, te perdono</a></button>
+    <button id="noButton" onclick="NoTePerdono()">No, no te perdono</button>
+
+    <script>
+        function TePerdono() {
+            alert("¡Gracias por perdonarme! ❤");
+        }
+
+        function NoTePerdono() {
+            const button = document.getElementById("noButton");
+            const container = document.body;
+
+            const containerWidth = window.innerWidth;
+            const containerHeight = window.innerHeight;
+
+            const buttonWidth = button.offsetWidth;
+            const buttonHeight = button.offsetHeight;
+
+            const randomX = Math.random() * (containerWidth - buttonWidth);
+            const randomY = Math.random() * (containerHeight - buttonHeight);
+
+            button.style.position = "absolute";
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        }
+    </script>
+</body>
+</html>

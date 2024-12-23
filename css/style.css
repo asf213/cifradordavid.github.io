@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap');
+
+* {
+  font-family: cursive;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.botones{
+  margin-top: 20px;
+  color: black;
+
+}
+span{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+}
+
+.botones, .a{
+  color: black;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+/* Ajuste de contenedores */
+.container_letra_cancion, .flowers {
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Hacer la imagen responsive */
+.imagen_viernes13 {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hacer que el audio se adapte */
+audio {
+  max-width: 100%;
+}
+
+/* Media Queries para ajustar elementos a pantallas más pequeñas */
+@media (max-width: 1024px) {
+  .container_letra_cancion, .flowers {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container_letra_cancion, .flowers {
+    padding: 10px;
+  }
+
+  .imagen_viernes13 {
+    width: 90%;
+  }
+
+  .heart {
+    transform: scale(0.8);
+  }
+
+  .imagen_viernes13 img{
+
+    z-index: -1;
+  }
+}
+
+@media (max-width: 480px) {
+    .imagen_viernes13 img{
+
+        z-index: -1;
+      }
+  body {
+    flex-direction: column;
+  }
+
+  .imagen_viernes13 {
+    width: 100%;
+  }
+
+  .heart {
+    transform: scale(0.6);
+  }
+
+
+}
+
+
+@media (max-width: 380px) {
+
+    .imagen_viernes13 img{
+
+        z-index: -1;
+      }
+    body {
+      flex-direction: column;
+    }
+  
+    .imagen_viernes13 {
+      width: 100%;
+    }
+  
+    .heart {
+      transform: scale(0.6);
+    }
+  
+  
+}
